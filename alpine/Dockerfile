@@ -2,7 +2,7 @@ FROM alpine:latest
 MAINTAINER JimLee <admin@jimlee.cn>
 
 RUN set -ex \
-    && apk add --no-cache openssh-server
+    && apk add --no-cache openssh
 	
 RUN echo 'root:root' |chpasswd
 
