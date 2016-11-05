@@ -1,0 +1,14 @@
+{
+"listen": ":18388",
+"target": "127.0.0.1:8388",
+"key": "kcptun",
+"crypt": "aes-128",
+"mode": "fast2",
+"mtu": 1350,
+"sndwnd": 1024,
+"rcvwnd": 1024,
+"datashard": 10,
+"parityshard": 3,
+"dscp": 0,
+"nocomp": false
+}
