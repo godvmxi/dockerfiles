@@ -18,7 +18,7 @@ RUN \
     apk add --no-cache --virtual .build-deps curl \
     && mkdir -p /opt/kcptun \
     && cd /opt/kcptun \
-    && curl -fSL https://github.com/xtaci/kcptun/releases/download/v20161111/kcptun-linux-amd64-20161111.tar.gz | tar xz \
+    && curl -fSL https://github.com/xtaci/kcptun/releases/download/v20161111/kcptun-linux-amd64-20161118.tar.gz | tar xz \
     && rm client_linux_amd64 \
     && cd ~ \
     && apk del .build-deps \
