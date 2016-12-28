@@ -3,13 +3,13 @@ A docker project for collecting and presenting all info about ssr deployed on ar
 
 ## Usage
 ```
-镜像  malaohu/ssr-with-net-speeder-arukas
-端口  3999 TCP
-CMD   node /app/server.js token secret xxxxx-appid-xxxxxx
-#推荐使用上面的CMD命令
+image  jimlee1996/icssr
+port   3999 TCP
+CMD    node /app/server.js yourtoken yoursecret xxxxx-appid-xxxxxx
+# suggest
 
-CMD : node /app/server.js xxxx@gmail.com password xxxxx-appid-xxxxxx
-#注意邮箱，密码和appid直接有一个空格
+CMD : node /app/server.js xxxx@gmail.com yourpassword xxxxx-appid-xxxxxx
+# for losers
 ```
 
 详细说明一下CMD中的命令。
@@ -31,8 +31,4 @@ ID	fd9b708e-9a2c-45a0-b81c-620944369c2d
 该ID必须在你的账号下才能访问。
 如果你输入的appid 是 all。会自动获取你账号下使用以下镜像创建的APP。
 
-"malaohu/ssr-with-net-speeder",
-
-"lowid/ss-with-net-speeder",
-
-"smounives/shadowsocksr-docker"
+"jimlee1996/ssr"
