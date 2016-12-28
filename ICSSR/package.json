@@ -1,7 +1,7 @@
 {
   "name": "arukas-get-ip-port",
   "version": "1.0.0",
-  "author": "Malaohu",
+  "author": "JimLee",
   "description": "",
   "dependencies": {
     "express": "4.*",
