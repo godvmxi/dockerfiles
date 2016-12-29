@@ -84,8 +84,9 @@ function deal_data(_appid,data,callback)
                 var ip = host.substring(6,host.indexOf(".")).replace(/-/g,".");
                 var service_port = jn.attributes.port_mappings[j][0].service_port;
                 var container_port = jn.attributes.port_mappings[j][0].container_port;
-                
-				var ret_json = {"appid":data[i].id,"server":ip,"server_port":service_port};                    
+                var domain_name = jn.attributes.arukas_domain
+				
+				var ret_json = {"appid":data[i].id,"server":ip,"server_port":service_port,"name":domain_name};                    
                 ret_list.push(ret_json);
             }
         }
@@ -101,10 +102,6 @@ app.get('/:appid',function(req,res){
     else
         return res.send(data);
    }); 
-})
-
-app.get('/i', function (req, res) {
-    res.send('http://51.ruyo.net');
 })
 
 app.listen(3999, function () {
