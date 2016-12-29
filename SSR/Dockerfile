@@ -2,23 +2,24 @@ FROM alpine:edge
 MAINTAINER Jim Lee <admin@jimlee.cn>
 
 RUN apk update \
-    && apk add python libsodium unzip wget \
+    && apk add python libsodium unzip \
     && rm -rf /var/cache/apk/*
+
+COPY shadowsocksr-manyuser.zip /tmp/manyuser.zip
 
 RUN mkdir /ssr \
     && cd /ssr \
-    && wget --no-check-certificate https://github.com/breakwa11/shadowsocks/archive/manyuser.zip -O /tmp/manyuser.zip \
     && unzip -d /tmp /tmp/manyuser.zip \
-    && mv /tmp/shadowsocks-manyuser/shadowsocks /ssr/shadowsocks \
+    && mv /tmp/shadowsocksr-manyuser/shadowsocks /ssr/shadowsocks \
     && rm -rf /tmp/*
 
 ADD shadowsocks.json /shadowsocks.json
 
-RUN \
-    apk add --no-cache --virtual .build-deps curl \
-    && mkdir -p /opt/kcptun \
-    && cd /opt/kcptun \
-    && curl -fSL https://github.com/xtaci/kcptun/releases/download/v20161111/kcptun-linux-amd64-20161118.tar.gz | tar xz \
+RUN mkdir -p /opt/kcptun
+COPY kcptun-linux-amd64.tar.gz /opt/kcptun/kcptun.tar.gz
+
+RUN cd /opt/kcptun \
+    && tar xz kcptun.tar.gz \
     && rm client_linux_amd64 \
     && cd ~ \
     && apk del .build-deps \
