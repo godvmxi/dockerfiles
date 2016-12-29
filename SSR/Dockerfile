@@ -19,8 +19,7 @@ RUN rm -rf /tmp/*
 ADD shadowsocks.json /shadowsocks.json
 ADD kcptun.json /kcptun.json
 
-RUN apk del .build-deps \
-    && apk add --no-cache supervisor
+RUN apk add --no-cache supervisor
 
 COPY supervisord.conf /etc/supervisord.conf
 
