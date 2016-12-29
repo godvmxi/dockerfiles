@@ -5,27 +5,22 @@ RUN apk update \
     && apk add python libsodium unzip \
     && rm -rf /var/cache/apk/*
 
-COPY shadowsocksr-manyuser.zip /tmp/manyuser.zip
+COPY shadowsocks.zip /tmp/shadowsocks.zip
+COPY kcptun.zip /tmp/kcptun.zip
 
-RUN mkdir /ssr \
-    && cd /ssr \
-    && unzip -d /tmp /tmp/manyuser.zip \
-    && mv /tmp/shadowsocksr-manyuser/shadowsocks /ssr/shadowsocks \
-    && rm -rf /tmp/*
+RUN mkdir /shadowsocks \
+    && unzip -d /shadowsocks /tmp/shadowsocks.zip
+RUN mkdir /kcptun \
+    && unzip -d /kcptun /tmp/kcptun.zip \
+    && chmod +x /kcptun/server_linux_amd64
+
+RUN rm -rf /tmp/*
 
 ADD shadowsocks.json /shadowsocks.json
-
-RUN mkdir -p /opt/kcptun
-COPY kcptun-linux-amd64.tar.gz /opt/kcptun/kcptun.tar.gz
-
-RUN cd /opt/kcptun \
-    && tar xz kcptun.tar.gz \
-    && rm client_linux_amd64 \
-    && cd ~ \
-    && apk del .build-deps \
-    && apk add --no-cache supervisor
-	
 ADD kcptun.json /kcptun.json
+
+RUN apk del .build-deps \
+    && apk add --no-cache supervisor
 
 COPY supervisord.conf /etc/supervisord.conf
 
