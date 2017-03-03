@@ -9,7 +9,7 @@
     "method": "chacha20",
     "protocol": "auth_sha1_v4",
     "protocol_param": "",
-    "obfs": "http_simple",
+    "obfs": "tls1.2_ticket_auth",
     "obfs_param": "",
     "redirect": "",
     "dns_ipv6": false,
